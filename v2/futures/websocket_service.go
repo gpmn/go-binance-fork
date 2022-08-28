@@ -830,24 +830,24 @@ type WsAccountUpdate struct {
 
 // WsBalance define balance
 type WsBalance struct {
-	Asset              string `json:"a"`
-	Balance            string `json:"wb"`
-	CrossWalletBalance string `json:"cw"`
-	ChangeBalance      string `json:"bc"`
+	Asset              string  `json:"a"`
+	Balance            Float64 `json:"wb"`
+	CrossWalletBalance string  `json:"cw"`
+	ChangeBalance      string  `json:"bc"`
 }
 
 // WsPosition define position
 type WsPosition struct {
 	Symbol                    string           `json:"s"`
 	Side                      PositionSideType `json:"ps"`
-	Amount                    string           `json:"pa"`
+	Amount                    Float64          `json:"pa"`
 	MarginType                MarginType       `json:"mt"`
 	IsolatedWallet            string           `json:"iw"`
-	EntryPrice                string           `json:"ep"`
-	MarkPrice                 string           `json:"mp"`
-	UnrealizedPnL             string           `json:"up"`
-	AccumulatedRealized       string           `json:"cr"`
-	MaintenanceMarginRequired string           `json:"mm"`
+	EntryPrice                Float64          `json:"ep"`
+	MarkPrice                 Float64          `json:"mp"`
+	UnrealizedPnL             Float64          `json:"up"`
+	AccumulatedRealized       Float64          `json:"cr"`
+	MaintenanceMarginRequired Float64          `json:"mm"`
 }
 
 // WsOrderTradeUpdate define order trade update

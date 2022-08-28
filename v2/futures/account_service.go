@@ -86,31 +86,31 @@ type Account struct {
 
 // AccountAsset define account asset
 type AccountAsset struct {
-	Asset                  string `json:"asset"`
-	InitialMargin          string `json:"initialMargin"`
-	MaintMargin            string `json:"maintMargin"`
-	MarginBalance          string `json:"marginBalance"`
-	MaxWithdrawAmount      string `json:"maxWithdrawAmount"`
-	OpenOrderInitialMargin string `json:"openOrderInitialMargin"`
-	PositionInitialMargin  string `json:"positionInitialMargin"`
-	UnrealizedProfit       string `json:"unrealizedProfit"`
-	WalletBalance          string `json:"walletBalance"`
+	Asset                  string  `json:"asset"`
+	InitialMargin          Float64 `json:"initialMargin"`
+	MaintMargin            Float64 `json:"maintMargin"`
+	MarginBalance          Float64 `json:"marginBalance"`
+	MaxWithdrawAmount      Float64 `json:"maxWithdrawAmount"`
+	OpenOrderInitialMargin Float64 `json:"openOrderInitialMargin"`
+	PositionInitialMargin  Float64 `json:"positionInitialMargin"`
+	UnrealizedProfit       Float64 `json:"unrealizedProfit"`
+	WalletBalance          Float64 `json:"walletBalance"`
 }
 
 // AccountPosition define account position
 type AccountPosition struct {
 	Isolated               bool             `json:"isolated"`
 	Leverage               string           `json:"leverage"`
-	InitialMargin          string           `json:"initialMargin"`
-	MaintMargin            string           `json:"maintMargin"`
-	OpenOrderInitialMargin string           `json:"openOrderInitialMargin"`
-	PositionInitialMargin  string           `json:"positionInitialMargin"`
+	InitialMargin          Float64          `json:"initialMargin"`
+	MaintMargin            Float64          `json:"maintMargin"`
+	OpenOrderInitialMargin Float64          `json:"openOrderInitialMargin"`
+	PositionInitialMargin  Float64          `json:"positionInitialMargin"`
 	Symbol                 string           `json:"symbol"`
-	UnrealizedProfit       string           `json:"unrealizedProfit"`
-	EntryPrice             string           `json:"entryPrice"`
-	MaxNotional            string           `json:"maxNotional"`
+	UnrealizedProfit       Float64          `json:"unrealizedProfit"`
+	EntryPrice             Float64          `json:"entryPrice"`
+	MaxNotional            Float64          `json:"maxNotional"`
 	PositionSide           PositionSideType `json:"positionSide"`
-	PositionAmt            string           `json:"positionAmt"`
+	PositionAmt            Float64          `json:"positionAmt"`
 	Notional               string           `json:"notional"`
 	IsolatedWallet         string           `json:"isolatedWallet"`
 	UpdateTime             int64            `json:"updateTime"`
