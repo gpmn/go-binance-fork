@@ -857,16 +857,16 @@ type WsOrderTradeUpdate struct {
 	Side                 SideType           `json:"S"`
 	Type                 OrderType          `json:"o"`
 	TimeInForce          TimeInForceType    `json:"f"`
-	OriginalQty          string             `json:"q"`
-	OriginalPrice        string             `json:"p"`
-	AveragePrice         string             `json:"ap"`
-	StopPrice            string             `json:"sp"`
+	OriginalQty          Float64            `json:"q"`
+	OriginalPrice        Float64            `json:"p"`
+	AveragePrice         Float64            `json:"ap"`
+	StopPrice            Float64            `json:"sp"`
 	ExecutionType        OrderExecutionType `json:"x"`
 	Status               OrderStatusType    `json:"X"`
 	ID                   int64              `json:"i"`
-	LastFilledQty        string             `json:"l"`
-	AccumulatedFilledQty string             `json:"z"`
-	LastFilledPrice      string             `json:"L"`
+	LastFilledQty        Float64            `json:"l"`
+	AccumulatedFilledQty Float64            `json:"z"`
+	LastFilledPrice      Float64            `json:"L"`
 	CommissionAsset      string             `json:"N"`
 	Commission           string             `json:"n"`
 	TradeTime            int64              `json:"T"`
@@ -879,9 +879,9 @@ type WsOrderTradeUpdate struct {
 	OriginalType         OrderType          `json:"ot"`
 	PositionSide         PositionSideType   `json:"ps"`
 	IsClosingPosition    bool               `json:"cp"`
-	ActivationPrice      string             `json:"AP"`
+	ActivationPrice      Float64            `json:"AP"`
 	CallbackRate         string             `json:"cr"`
-	RealizedPnL          string             `json:"rp"`
+	RealizedPnL          Float64            `json:"rp"`
 }
 
 // WsAccountConfigUpdate define account config update

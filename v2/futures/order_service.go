@@ -315,23 +315,23 @@ type Order struct {
 	Symbol           string           `json:"symbol"`
 	OrderID          int64            `json:"orderId"`
 	ClientOrderID    string           `json:"clientOrderId"`
-	Price            string           `json:"price"`
+	Price            Float64          `json:"price"`
 	ReduceOnly       bool             `json:"reduceOnly"`
-	OrigQuantity     string           `json:"origQty"`
-	ExecutedQuantity string           `json:"executedQty"`
-	CumQuantity      string           `json:"cumQty"`
-	CumQuote         string           `json:"cumQuote"`
+	OrigQuantity     Float64          `json:"origQty"`
+	ExecutedQuantity Float64          `json:"executedQty"`
+	CumQuantity      Float64          `json:"cumQty"`
+	CumQuote         Float64          `json:"cumQuote"`
 	Status           OrderStatusType  `json:"status"`
 	TimeInForce      TimeInForceType  `json:"timeInForce"`
 	Type             OrderType        `json:"type"`
 	Side             SideType         `json:"side"`
-	StopPrice        string           `json:"stopPrice"`
+	StopPrice        Float64          `json:"stopPrice"`
 	Time             int64            `json:"time"`
 	UpdateTime       int64            `json:"updateTime"`
 	WorkingType      WorkingType      `json:"workingType"`
 	ActivatePrice    string           `json:"activatePrice"`
-	PriceRate        string           `json:"priceRate"`
-	AvgPrice         string           `json:"avgPrice"`
+	PriceRate        Float64          `json:"priceRate"`
+	AvgPrice         Float64          `json:"avgPrice"`
 	OrigType         string           `json:"origType"`
 	PositionSide     PositionSideType `json:"positionSide"`
 	PriceProtect     bool             `json:"priceProtect"`
