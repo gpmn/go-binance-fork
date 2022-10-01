@@ -868,7 +868,7 @@ type WsOrderTradeUpdate struct {
 	AccumulatedFilledQty Float64            `json:"z"`
 	LastFilledPrice      Float64            `json:"L"`
 	CommissionAsset      string             `json:"N"`
-	Commission           string             `json:"n"`
+	Commission           Float64            `json:"n"`
 	TradeTime            int64              `json:"T"`
 	TradeID              int64              `json:"t"`
 	BidsNotional         string             `json:"b"`
