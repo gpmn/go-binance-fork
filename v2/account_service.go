@@ -3,6 +3,8 @@ package binance
 import (
 	"context"
 	"net/http"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // GetAccountService get account info
@@ -46,9 +48,9 @@ type Account struct {
 
 // Balance define user balance of your account
 type Balance struct {
-	Asset  string `json:"asset"`
-	Free   string `json:"free"`
-	Locked string `json:"locked"`
+	Asset  string         `json:"asset"`
+	Free   common.Float64 `json:"free"`
+	Locked common.Float64 `json:"locked"`
 }
 
 // GetAccountSnapshotService all account orders; active, canceled, or filled
@@ -143,19 +145,19 @@ type SnapshotData struct {
 
 // SnapshotBalances define snapshot balances
 type SnapshotBalances struct {
-	Asset  string `json:"asset"`
-	Free   string `json:"free"`
-	Locked string `json:"locked"`
+	Asset  string         `json:"asset"`
+	Free   common.Float64 `json:"free"`
+	Locked common.Float64 `json:"locked"`
 }
 
 // SnapshotUserAssets define snapshot user assets
 type SnapshotUserAssets struct {
-	Asset    string `json:"asset"`
-	Borrowed string `json:"borrowed"`
-	Free     string `json:"free"`
-	Interest string `json:"interest"`
-	Locked   string `json:"locked"`
-	NetAsset string `json:"netAsset"`
+	Asset    string         `json:"asset"`
+	Borrowed common.Float64 `json:"borrowed"`
+	Free     common.Float64 `json:"free"`
+	Interest common.Float64 `json:"interest"`
+	Locked   common.Float64 `json:"locked"`
+	NetAsset common.Float64 `json:"netAsset"`
 }
 
 // SnapshotAssets define snapshot assets

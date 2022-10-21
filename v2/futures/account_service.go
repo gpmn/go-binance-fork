@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // GetBalanceService get account balance
@@ -89,32 +91,32 @@ type Account struct {
 
 // AccountAsset define account asset
 type AccountAsset struct {
-	Asset                  string  `json:"asset"`
-	InitialMargin          Float64 `json:"initialMargin"`
-	MaintMargin            Float64 `json:"maintMargin"`
-	MarginBalance          Float64 `json:"marginBalance"`
-	MaxWithdrawAmount      Float64 `json:"maxWithdrawAmount"`
-	OpenOrderInitialMargin Float64 `json:"openOrderInitialMargin"`
-	PositionInitialMargin  Float64 `json:"positionInitialMargin"`
-	UnrealizedProfit       Float64 `json:"unrealizedProfit"`
-	WalletBalance          Float64 `json:"walletBalance"`
-	MarginAvailable        bool    `json:"marginAvailable"`
+	Asset                  string         `json:"asset"`
+	InitialMargin          common.Float64 `json:"initialMargin"`
+	MaintMargin            common.Float64 `json:"maintMargin"`
+	MarginBalance          common.Float64 `json:"marginBalance"`
+	MaxWithdrawAmount      common.Float64 `json:"maxWithdrawAmount"`
+	OpenOrderInitialMargin common.Float64 `json:"openOrderInitialMargin"`
+	PositionInitialMargin  common.Float64 `json:"positionInitialMargin"`
+	UnrealizedProfit       common.Float64 `json:"unrealizedProfit"`
+	WalletBalance          common.Float64 `json:"walletBalance"`
+	MarginAvailable        bool           `json:"marginAvailable"`
 }
 
 // AccountPosition define account position
 type AccountPosition struct {
 	Isolated               bool             `json:"isolated"`
 	Leverage               string           `json:"leverage"`
-	InitialMargin          Float64          `json:"initialMargin"`
-	MaintMargin            Float64          `json:"maintMargin"`
-	OpenOrderInitialMargin Float64          `json:"openOrderInitialMargin"`
-	PositionInitialMargin  Float64          `json:"positionInitialMargin"`
+	InitialMargin          common.Float64   `json:"initialMargin"`
+	MaintMargin            common.Float64   `json:"maintMargin"`
+	OpenOrderInitialMargin common.Float64   `json:"openOrderInitialMargin"`
+	PositionInitialMargin  common.Float64   `json:"positionInitialMargin"`
 	Symbol                 string           `json:"symbol"`
-	UnrealizedProfit       Float64          `json:"unrealizedProfit"`
-	EntryPrice             Float64          `json:"entryPrice"`
-	MaxNotional            Float64          `json:"maxNotional"`
+	UnrealizedProfit       common.Float64   `json:"unrealizedProfit"`
+	EntryPrice             common.Float64   `json:"entryPrice"`
+	MaxNotional            common.Float64   `json:"maxNotional"`
 	PositionSide           PositionSideType `json:"positionSide"`
-	PositionAmt            Float64          `json:"positionAmt"`
+	PositionAmt            common.Float64   `json:"positionAmt"`
 	Notional               string           `json:"notional"`
 	IsolatedWallet         string           `json:"isolatedWallet"`
 	UpdateTime             int64            `json:"updateTime"`

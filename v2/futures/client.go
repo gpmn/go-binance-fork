@@ -7,14 +7,12 @@ import (
 	"crypto/sha256"
 	"crypto/tls"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
-	"strconv"
 	"time"
 
 	"github.com/adshao/go-binance/v2/common"
@@ -265,7 +263,6 @@ func (c *Client) parseRequest(r *request, opts ...RequestOption) (err error) {
 	if err != nil {
 		return err
 	}
-
 	fullURL := fmt.Sprintf("%s%s", c.BaseURL, r.endpoint)
 	if r.recvWindow > 0 {
 		r.setParam(recvWindowKey, r.recvWindow)
@@ -594,56 +591,4 @@ func (c *Client) NewOpenInterestStatisticsService() *OpenInterestStatisticsServi
 // NewLongShortRatioService init open interest statistics service
 func (c *Client) NewLongShortRatioService() *LongShortRatioService {
 	return &LongShortRatioService{c: c}
-}
-
-// Float64 :
-type Float64 float64
-
-// Int64 :
-type Int64 int64
-
-// UnmarshalJSON :
-func (val *Float64) UnmarshalJSON(b []byte) (err error) {
-	var slice []byte
-	if len(b) >= 2 && b[0] == '"' { // "123.456" 和 ""格式的数字字符串
-		if b[len(b)-1] != '"' {
-			return errors.New(`missing '"' suffix`)
-		}
-		slice = b[1 : len(b)-1]
-		if len(slice) == 0 {
-			*val = 0
-			return nil
-		}
-	} else { //	    123.456格式的字符串
-		slice = b
-	}
-	tmp, err := strconv.ParseFloat(string(slice), 10)
-	if nil != err {
-		return err
-	}
-	*val = Float64(tmp)
-	return nil
-}
-
-// UnmarshalJSON :
-func (val *Int64) UnmarshalJSON(b []byte) (err error) {
-	var slice []byte
-	if len(b) >= 2 && b[0] == '"' { // "123.456" 和 ""格式的数字字符串
-		if b[len(b)-1] != '"' {
-			return errors.New(`missing '"' suffix`)
-		}
-		slice = b[1 : len(b)-1]
-		if len(slice) == 0 {
-			*val = 0
-			return nil
-		}
-	} else { //	    123.456格式的字符串
-		slice = b
-	}
-	tmp, err := strconv.ParseInt(string(slice), 10, 64)
-	if nil != err {
-		return err
-	}
-	*val = Int64(tmp)
-	return nil
 }

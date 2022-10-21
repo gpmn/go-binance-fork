@@ -4,6 +4,8 @@ import (
 	"context"
 	stdjson "encoding/json"
 	"net/http"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // CreateOrderService create order
@@ -517,15 +519,15 @@ type Order struct {
 	OrderID                  int64           `json:"orderId"`
 	OrderListId              int64           `json:"orderListId"`
 	ClientOrderID            string          `json:"clientOrderId"`
-	Price                    string          `json:"price"`
-	OrigQuantity             string          `json:"origQty"`
-	ExecutedQuantity         string          `json:"executedQty"`
-	CummulativeQuoteQuantity string          `json:"cummulativeQuoteQty"`
+	Price                    common.Float64  `json:"price"`
+	OrigQuantity             common.Float64  `json:"origQty"`
+	ExecutedQuantity         common.Float64  `json:"executedQty"`
+	CummulativeQuoteQuantity common.Float64  `json:"cummulativeQuoteQty"`
 	Status                   OrderStatusType `json:"status"`
 	TimeInForce              TimeInForceType `json:"timeInForce"`
 	Type                     OrderType       `json:"type"`
 	Side                     SideType        `json:"side"`
-	StopPrice                string          `json:"stopPrice"`
+	StopPrice                common.Float64  `json:"stopPrice"`
 	IcebergQuantity          string          `json:"icebergQty"`
 	Time                     int64           `json:"time"`
 	UpdateTime               int64           `json:"updateTime"`

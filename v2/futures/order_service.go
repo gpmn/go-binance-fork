@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // CreateOrderService create order
@@ -28,6 +30,12 @@ type CreateOrderService struct {
 	priceProtect     *bool
 	newOrderRespType NewOrderRespType
 	closePosition    *bool
+}
+
+// ResetClient : reset client ptr
+func (s *CreateOrderService) ResetClient(c *Client) *CreateOrderService {
+	s.c = c
+	return s
 }
 
 // Symbol set symbol
@@ -367,23 +375,23 @@ type Order struct {
 	Symbol           string           `json:"symbol"`
 	OrderID          int64            `json:"orderId"`
 	ClientOrderID    string           `json:"clientOrderId"`
-	Price            Float64          `json:"price"`
+	Price            common.Float64   `json:"price"`
 	ReduceOnly       bool             `json:"reduceOnly"`
-	OrigQuantity     Float64          `json:"origQty"`
-	ExecutedQuantity Float64          `json:"executedQty"`
-	CumQuantity      Float64          `json:"cumQty"`
-	CumQuote         Float64          `json:"cumQuote"`
+	OrigQuantity     common.Float64   `json:"origQty"`
+	ExecutedQuantity common.Float64   `json:"executedQty"`
+	CumQuantity      common.Float64   `json:"cumQty"`
+	CumQuote         common.Float64   `json:"cumQuote"`
 	Status           OrderStatusType  `json:"status"`
 	TimeInForce      TimeInForceType  `json:"timeInForce"`
 	Type             OrderType        `json:"type"`
 	Side             SideType         `json:"side"`
-	StopPrice        Float64          `json:"stopPrice"`
+	StopPrice        common.Float64   `json:"stopPrice"`
 	Time             int64            `json:"time"`
 	UpdateTime       int64            `json:"updateTime"`
 	WorkingType      WorkingType      `json:"workingType"`
 	ActivatePrice    string           `json:"activatePrice"`
-	PriceRate        Float64          `json:"priceRate"`
-	AvgPrice         Float64          `json:"avgPrice"`
+	PriceRate        common.Float64   `json:"priceRate"`
+	AvgPrice         common.Float64   `json:"avgPrice"`
 	OrigType         string           `json:"origType"`
 	PositionSide     PositionSideType `json:"positionSide"`
 	PriceProtect     bool             `json:"priceProtect"`

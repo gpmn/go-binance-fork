@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"strings"
 	"time"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // Endpoints
@@ -830,24 +832,24 @@ type WsAccountUpdate struct {
 
 // WsBalance define balance
 type WsBalance struct {
-	Asset              string  `json:"a"`
-	Balance            Float64 `json:"wb"`
-	CrossWalletBalance string  `json:"cw"`
-	ChangeBalance      string  `json:"bc"`
+	Asset              string         `json:"a"`
+	Balance            common.Float64 `json:"wb"`
+	CrossWalletBalance string         `json:"cw"`
+	ChangeBalance      string         `json:"bc"`
 }
 
 // WsPosition define position
 type WsPosition struct {
 	Symbol                    string           `json:"s"`
 	Side                      PositionSideType `json:"ps"`
-	Amount                    Float64          `json:"pa"`
+	Amount                    common.Float64   `json:"pa"`
 	MarginType                MarginType       `json:"mt"`
 	IsolatedWallet            string           `json:"iw"`
-	EntryPrice                Float64          `json:"ep"`
-	MarkPrice                 Float64          `json:"mp"`
-	UnrealizedPnL             Float64          `json:"up"`
-	AccumulatedRealized       Float64          `json:"cr"`
-	MaintenanceMarginRequired Float64          `json:"mm"`
+	EntryPrice                common.Float64   `json:"ep"`
+	MarkPrice                 common.Float64   `json:"mp"`
+	UnrealizedPnL             common.Float64   `json:"up"`
+	AccumulatedRealized       common.Float64   `json:"cr"`
+	MaintenanceMarginRequired common.Float64   `json:"mm"`
 }
 
 // WsOrderTradeUpdate define order trade update
@@ -857,18 +859,18 @@ type WsOrderTradeUpdate struct {
 	Side                 SideType           `json:"S"`
 	Type                 OrderType          `json:"o"`
 	TimeInForce          TimeInForceType    `json:"f"`
-	OriginalQty          Float64            `json:"q"`
-	OriginalPrice        Float64            `json:"p"`
-	AveragePrice         Float64            `json:"ap"`
-	StopPrice            Float64            `json:"sp"`
+	OriginalQty          common.Float64     `json:"q"`
+	OriginalPrice        common.Float64     `json:"p"`
+	AveragePrice         common.Float64     `json:"ap"`
+	StopPrice            common.Float64     `json:"sp"`
 	ExecutionType        OrderExecutionType `json:"x"`
 	Status               OrderStatusType    `json:"X"`
 	ID                   int64              `json:"i"`
-	LastFilledQty        Float64            `json:"l"`
-	AccumulatedFilledQty Float64            `json:"z"`
-	LastFilledPrice      Float64            `json:"L"`
+	LastFilledQty        common.Float64     `json:"l"`
+	AccumulatedFilledQty common.Float64     `json:"z"`
+	LastFilledPrice      common.Float64     `json:"L"`
 	CommissionAsset      string             `json:"N"`
-	Commission           Float64            `json:"n"`
+	Commission           common.Float64     `json:"n"`
 	TradeTime            int64              `json:"T"`
 	TradeID              int64              `json:"t"`
 	BidsNotional         string             `json:"b"`
@@ -879,9 +881,9 @@ type WsOrderTradeUpdate struct {
 	OriginalType         OrderType          `json:"ot"`
 	PositionSide         PositionSideType   `json:"ps"`
 	IsClosingPosition    bool               `json:"cp"`
-	ActivationPrice      Float64            `json:"AP"`
+	ActivationPrice      common.Float64     `json:"AP"`
 	CallbackRate         string             `json:"cr"`
-	RealizedPnL          Float64            `json:"rp"`
+	RealizedPnL          common.Float64     `json:"rp"`
 }
 
 // WsAccountConfigUpdate define account config update

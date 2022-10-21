@@ -6,6 +6,8 @@ import (
 	"time"
 
 	stdjson "encoding/json"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // Endpoints
@@ -502,22 +504,22 @@ type WsBalanceUpdate struct {
 type WsOrderUpdate struct {
 	Symbol            string          `json:"s"`
 	ClientOrderId     string          `json:"c"`
-	Side              string          `json:"S"`
-	Type              string          `json:"o"`
+	Side              SideType        `json:"S"`
+	Type              OrderType       `json:"o"`
 	TimeInForce       TimeInForceType `json:"f"`
-	Volume            string          `json:"q"`
-	Price             string          `json:"p"`
-	StopPrice         string          `json:"P"`
-	IceBergVolume     string          `json:"F"`
+	Volume            common.Float64  `json:"q"`
+	Price             common.Float64  `json:"p"`
+	StopPrice         common.Float64  `json:"P"`
+	IceBergVolume     common.Float64  `json:"F"`
 	OrderListId       int64           `json:"g"` // for OCO
 	OrigCustomOrderId string          `json:"C"` // customized order ID for the original order
 	ExecutionType     string          `json:"x"` // execution type for this event NEW/TRADE...
 	Status            string          `json:"X"` // order status
 	RejectReason      string          `json:"r"`
 	Id                int64           `json:"i"` // order id
-	LatestVolume      string          `json:"l"` // quantity for the latest trade
-	FilledVolume      string          `json:"z"`
-	LatestPrice       string          `json:"L"` // price for the latest trade
+	LatestVolume      common.Float64  `json:"l"` // quantity for the latest trade
+	FilledVolume      common.Float64  `json:"z"`
+	LatestPrice       common.Float64  `json:"L"` // price for the latest trade
 	FeeAsset          string          `json:"N"`
 	FeeCost           string          `json:"n"`
 	TransactionTime   int64           `json:"T"`
@@ -525,9 +527,9 @@ type WsOrderUpdate struct {
 	IsInOrderBook     bool            `json:"w"` // is the order in the order book?
 	IsMaker           bool            `json:"m"` // is this order maker?
 	CreateTime        int64           `json:"O"`
-	FilledQuoteVolume string          `json:"Z"` // the quote volume that already filled
-	LatestQuoteVolume string          `json:"Y"` // the quote volume for the latest trade
-	QuoteVolume       string          `json:"Q"`
+	FilledQuoteVolume common.Float64  `json:"Z"` // the quote volume that already filled
+	LatestQuoteVolume common.Float64  `json:"Y"` // the quote volume for the latest trade
+	QuoteVolume       common.Float64  `json:"Q"`
 }
 
 type WsOCOUpdate struct {
