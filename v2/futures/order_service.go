@@ -32,12 +32,6 @@ type CreateOrderService struct {
 	closePosition    *bool
 }
 
-// ResetClient : reset client ptr
-func (s *CreateOrderService) ResetClient(c *Client) *CreateOrderService {
-	s.c = c
-	return s
-}
-
 // Symbol set symbol
 func (s *CreateOrderService) Symbol(symbol string) *CreateOrderService {
 	s.symbol = symbol
