@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 type CommissionRateService struct {
@@ -22,6 +24,7 @@ func (s *CommissionRateService) Do(ctx context.Context, opts ...RequestOption) (
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/fapi/v1/commissionRate",
+		secType:  secTypeSigned,
 	}
 	if s.symbol != "" {
 		r.setParam("symbol", s.symbol)
@@ -40,7 +43,7 @@ func (s *CommissionRateService) Do(ctx context.Context, opts ...RequestOption) (
 
 // Commission Rate
 type CommissionRate struct {
-	Symbol              string `json:"symbol"`
-	MakerCommissionRate string `json:"makerCommissionRate"`
-	TakerCommissionRate string `json:"takerCommissionRate"`
+	Symbol              string         `json:"symbol"`
+	MakerCommissionRate common.Float64 `json:"makerCommissionRate"`
+	TakerCommissionRate common.Float64 `json:"takerCommissionRate"`
 }
