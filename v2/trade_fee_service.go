@@ -3,6 +3,8 @@ package binance
 import (
 	"context"
 	"net/http"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // TradeFeeService shows current trade fee for all symbols available
@@ -43,7 +45,7 @@ func (s *TradeFeeService) Do(ctx context.Context) (res []*TradeFeeDetails, err e
 
 // TradeFeeDetails represents details about fees
 type TradeFeeDetails struct {
-	Symbol          string `json:"symbol"`
-	MakerCommission string `json:"makerCommission"`
-	TakerCommission string `json:"takerCommission"`
+	Symbol          string         `json:"symbol"`
+	MakerCommission common.Float64 `json:"makerCommission"`
+	TakerCommission common.Float64 `json:"takerCommission"`
 }
