@@ -51,8 +51,8 @@ func (s *DepthService) Do(ctx context.Context, opts ...RequestOption) (res *Dept
 	for i := 0; i < bidsLen; i++ {
 		item := j.Get("bids").GetIndex(i)
 		res.Bids[i] = Bid{
-			Price:    item.GetIndex(0).MustString(),
-			Quantity: item.GetIndex(1).MustString(),
+			Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+			Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 		}
 	}
 	asksLen := len(j.Get("asks").MustArray())
@@ -60,8 +60,8 @@ func (s *DepthService) Do(ctx context.Context, opts ...RequestOption) (res *Dept
 	for i := 0; i < asksLen; i++ {
 		item := j.Get("asks").GetIndex(i)
 		res.Asks[i] = Ask{
-			Price:    item.GetIndex(0).MustString(),
-			Quantity: item.GetIndex(1).MustString(),
+			Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+			Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 		}
 	}
 	return res, nil

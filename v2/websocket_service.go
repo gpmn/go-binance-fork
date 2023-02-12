@@ -81,8 +81,8 @@ func wsPartialDepthServe(endpoint string, symbol string, handler WsPartialDepthH
 		for i := 0; i < bidsLen; i++ {
 			item := j.Get("bids").GetIndex(i)
 			event.Bids[i] = Bid{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		asksLen := len(j.Get("asks").MustArray())
@@ -90,8 +90,8 @@ func wsPartialDepthServe(endpoint string, symbol string, handler WsPartialDepthH
 		for i := 0; i < asksLen; i++ {
 			item := j.Get("asks").GetIndex(i)
 			event.Asks[i] = Ask{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		handler(event)
@@ -124,8 +124,8 @@ func WsCombinedPartialDepthServe(symbolLevels map[string]string, handler WsParti
 		for i := 0; i < bidsLen; i++ {
 			item := data["bids"].([]interface{})[i].([]interface{})
 			event.Bids[i] = Bid{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		asksLen := len(data["asks"].([]interface{}))
@@ -134,8 +134,8 @@ func WsCombinedPartialDepthServe(symbolLevels map[string]string, handler WsParti
 
 			item := data["asks"].([]interface{})[i].([]interface{})
 			event.Asks[i] = Ask{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		handler(event)
@@ -178,8 +178,8 @@ func wsDepthServe(endpoint string, handler WsDepthHandler, errHandler ErrHandler
 		for i := 0; i < bidsLen; i++ {
 			item := j.Get("b").GetIndex(i)
 			event.Bids[i] = Bid{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		asksLen := len(j.Get("a").MustArray())
@@ -187,8 +187,8 @@ func wsDepthServe(endpoint string, handler WsDepthHandler, errHandler ErrHandler
 		for i := 0; i < asksLen; i++ {
 			item := j.Get("a").GetIndex(i)
 			event.Asks[i] = Ask{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		handler(event)
@@ -247,8 +247,8 @@ func wsCombinedDepthServe(endpoint string, handler WsDepthHandler, errHandler Er
 		for i := 0; i < bidsLen; i++ {
 			item := data["b"].([]interface{})[i].([]interface{})
 			event.Bids[i] = Bid{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		asksLen := len(data["a"].([]interface{}))
@@ -257,8 +257,8 @@ func wsCombinedDepthServe(endpoint string, handler WsDepthHandler, errHandler Er
 
 			item := data["a"].([]interface{})[i].([]interface{})
 			event.Asks[i] = Ask{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		handler(event)
@@ -491,9 +491,9 @@ type WsUserDataEvent struct {
 
 // WsAccountUpdate define account update
 type WsAccountUpdate struct {
-	Asset  string `json:"a"`
-	Free   string `json:"f"`
-	Locked string `json:"l"`
+	Asset  string         `json:"a"`
+	Free   common.Float64 `json:"f"`
+	Locked common.Float64 `json:"l"`
 }
 
 type WsBalanceUpdate struct {
@@ -685,29 +685,29 @@ type WsAllMarketsStatEvent []*WsMarketStatEvent
 
 // WsMarketStatEvent define websocket market statistics event
 type WsMarketStatEvent struct {
-	Event              string `json:"e"`
-	Time               int64  `json:"E"`
-	Symbol             string `json:"s"`
-	PriceChange        string `json:"p"`
-	PriceChangePercent string `json:"P"`
-	WeightedAvgPrice   string `json:"w"`
-	PrevClosePrice     string `json:"x"`
-	LastPrice          string `json:"c"`
-	CloseQty           string `json:"Q"`
-	BidPrice           string `json:"b"`
-	BidQty             string `json:"B"`
-	AskPrice           string `json:"a"`
-	AskQty             string `json:"A"`
-	OpenPrice          string `json:"o"`
-	HighPrice          string `json:"h"`
-	LowPrice           string `json:"l"`
-	BaseVolume         string `json:"v"`
-	QuoteVolume        string `json:"q"`
-	OpenTime           int64  `json:"O"`
-	CloseTime          int64  `json:"C"`
-	FirstID            int64  `json:"F"`
-	LastID             int64  `json:"L"`
-	Count              int64  `json:"n"`
+	Event              string         `json:"e"`
+	Time               int64          `json:"E"`
+	Symbol             string         `json:"s"`
+	PriceChange        common.Float64 `json:"p"`
+	PriceChangePercent common.Float64 `json:"P"`
+	WeightedAvgPrice   common.Float64 `json:"w"`
+	PrevClosePrice     common.Float64 `json:"x"`
+	LastPrice          common.Float64 `json:"c"`
+	CloseQty           common.Float64 `json:"Q"`
+	BidPrice           common.Float64 `json:"b"`
+	BidQty             common.Float64 `json:"B"`
+	AskPrice           common.Float64 `json:"a"`
+	AskQty             common.Float64 `json:"A"`
+	OpenPrice          common.Float64 `json:"o"`
+	HighPrice          common.Float64 `json:"h"`
+	LowPrice           common.Float64 `json:"l"`
+	BaseVolume         common.Float64 `json:"v"`
+	QuoteVolume        common.Float64 `json:"q"`
+	OpenTime           int64          `json:"O"`
+	CloseTime          int64          `json:"C"`
+	FirstID            int64          `json:"F"`
+	LastID             int64          `json:"L"`
+	Count              int64          `json:"n"`
 }
 
 // WsAllMiniMarketsStatServeHandler handle websocket that push all mini-ticker market statistics for 24hr

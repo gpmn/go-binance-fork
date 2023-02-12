@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"strings"
 	"time"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // Endpoints
@@ -629,8 +631,8 @@ func wsDepthServe(symbol string, levels string, rate *time.Duration, handler WsD
 		for i := 0; i < bidsLen; i++ {
 			item := j.Get("b").GetIndex(i)
 			event.Bids[i] = Bid{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		asksLen := len(j.Get("a").MustArray())
@@ -638,8 +640,8 @@ func wsDepthServe(symbol string, levels string, rate *time.Duration, handler WsD
 		for i := 0; i < asksLen; i++ {
 			item := j.Get("a").GetIndex(i)
 			event.Asks[i] = Ask{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		handler(event)

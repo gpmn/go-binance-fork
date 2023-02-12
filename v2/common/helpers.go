@@ -3,6 +3,7 @@ package common
 import (
 	"bytes"
 	"errors"
+	"log"
 	"math"
 	"strconv"
 )
@@ -51,6 +52,17 @@ func (val *Float64) UnmarshalJSON(b []byte) (err error) {
 	}
 	*val = Float64(tmp)
 	return nil
+}
+
+// ParseFloat64Str :
+func ParseFloat64Str(str string) Float64 {
+	var fv Float64
+	err := fv.UnmarshalJSON([]byte(str))
+	if nil != err {
+		log.Printf("bad float64 str %s, looked as 0", str)
+		return 0
+	}
+	return fv
 }
 
 // UnmarshalJSON :

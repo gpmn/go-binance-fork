@@ -6,6 +6,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/adshao/go-binance/v2/common"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -1078,18 +1079,18 @@ func (s *websocketServiceTestSuite) testPartialDepthServe(levels int, rate *time
 			LastUpdateID:     17276701,
 			PrevLastUpdateID: 17276678,
 			Bids: []Bid{
-				{Price: "9523.0", Quantity: "5"},
-				{Price: "9522.8", Quantity: "8"},
-				{Price: "9522.6", Quantity: "2"},
-				{Price: "9522.4", Quantity: "1"},
-				{Price: "9522.0", Quantity: "5"},
+				{Price: common.ParseFloat64Str("9523.0"), Quantity: common.ParseFloat64Str("5")},
+				{Price: common.ParseFloat64Str("9522.8"), Quantity: common.ParseFloat64Str("8")},
+				{Price: common.ParseFloat64Str("9522.6"), Quantity: common.ParseFloat64Str("2")},
+				{Price: common.ParseFloat64Str("9522.4"), Quantity: common.ParseFloat64Str("1")},
+				{Price: common.ParseFloat64Str("9522.0"), Quantity: common.ParseFloat64Str("5")},
 			},
 			Asks: []Ask{
-				{Price: "9524.6", Quantity: "2"},
-				{Price: "9524.7", Quantity: "3"},
-				{Price: "9524.9", Quantity: "16"},
-				{Price: "9525.1", Quantity: "10"},
-				{Price: "9525.3", Quantity: "6"},
+				{Price: common.ParseFloat64Str("9524.6"), Quantity: common.ParseFloat64Str("2")},
+				{Price: common.ParseFloat64Str("9524.7"), Quantity: common.ParseFloat64Str("3")},
+				{Price: common.ParseFloat64Str("9524.9"), Quantity: common.ParseFloat64Str("16")},
+				{Price: common.ParseFloat64Str("9525.1"), Quantity: common.ParseFloat64Str("10")},
+				{Price: common.ParseFloat64Str("9525.3"), Quantity: common.ParseFloat64Str("6")},
 			},
 		}
 		s.assertDepthEvent(e, event)
@@ -1184,8 +1185,8 @@ func (s *websocketServiceTestSuite) TestDiffDepthServe() {
 			FirstUpdateID:    17285681,
 			LastUpdateID:     17285702,
 			PrevLastUpdateID: 17285675,
-			Bids:             []Bid{{Price: "9517.6", Quantity: "10"}},
-			Asks:             []Ask{{Price: "9518.5", Quantity: "45"}},
+			Bids:             []Bid{{Price: common.ParseFloat64Str("9517.6"), Quantity: common.ParseFloat64Str("10")}},
+			Asks:             []Ask{{Price: common.ParseFloat64Str("9518.5"), Quantity: common.ParseFloat64Str("45")}},
 		}
 		s.assertDepthEvent(e, event)
 	},

@@ -403,15 +403,15 @@ func WsAllMarketTickerServe(handler WsAllMarketTickerHandler, errHandler ErrHand
 
 // WsBookTickerEvent define websocket best book ticker event.
 type WsBookTickerEvent struct {
-	Event           string `json:"e"`
-	UpdateID        int64  `json:"u"`
-	Time            int64  `json:"E"`
-	TransactionTime int64  `json:"T"`
-	Symbol          string `json:"s"`
-	BestBidPrice    string `json:"b"`
-	BestBidQty      string `json:"B"`
-	BestAskPrice    string `json:"a"`
-	BestAskQty      string `json:"A"`
+	Event           string         `json:"e"`
+	UpdateID        int64          `json:"u"`
+	Time            int64          `json:"E"`
+	TransactionTime int64          `json:"T"`
+	Symbol          string         `json:"s"`
+	BestBidPrice    common.Float64 `json:"b"`
+	BestBidQty      common.Float64 `json:"B"`
+	BestAskPrice    common.Float64 `json:"a"`
+	BestAskQty      common.Float64 `json:"A"`
 }
 
 // WsBookTickerHandler handle websocket that pushes updates to the best bid or ask price or quantity in real-time for a specified symbol.
@@ -573,8 +573,8 @@ func WsCombinedDepthServe(symbolLevels map[string]string, handler WsDepthHandler
 		for i := 0; i < bidsLen; i++ {
 			item := data["b"].([]interface{})[i].([]interface{})
 			event.Bids[i] = Bid{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		asksLen := len(data["a"].([]interface{}))
@@ -582,8 +582,8 @@ func WsCombinedDepthServe(symbolLevels map[string]string, handler WsDepthHandler
 		for i := 0; i < asksLen; i++ {
 			item := data["a"].([]interface{})[i].([]interface{})
 			event.Asks[i] = Ask{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		handler(event)
@@ -619,8 +619,8 @@ func WsCombinedDiffDepthServe(symbols []string, handler WsDepthHandler, errHandl
 		for i := 0; i < bidsLen; i++ {
 			item := data["b"].([]interface{})[i].([]interface{})
 			event.Bids[i] = Bid{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		asksLen := len(data["a"].([]interface{}))
@@ -628,8 +628,8 @@ func WsCombinedDiffDepthServe(symbols []string, handler WsDepthHandler, errHandl
 		for i := 0; i < asksLen; i++ {
 			item := data["a"].([]interface{})[i].([]interface{})
 			event.Asks[i] = Ask{
-				Price:    item[0].(string),
-				Quantity: item[1].(string),
+				Price:    common.ParseFloat64Str(item[0].(string)),
+				Quantity: common.ParseFloat64Str(item[1].(string)),
 			}
 		}
 		handler(event)
@@ -677,8 +677,8 @@ func wsDepthServe(symbol string, levels string, rate *time.Duration, handler WsD
 		for i := 0; i < bidsLen; i++ {
 			item := j.Get("b").GetIndex(i)
 			event.Bids[i] = Bid{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		asksLen := len(j.Get("a").MustArray())
@@ -686,8 +686,8 @@ func wsDepthServe(symbol string, levels string, rate *time.Duration, handler WsD
 		for i := 0; i < asksLen; i++ {
 			item := j.Get("a").GetIndex(i)
 			event.Asks[i] = Ask{
-				Price:    item.GetIndex(0).MustString(),
-				Quantity: item.GetIndex(1).MustString(),
+				Price:    common.ParseFloat64Str(item.GetIndex(0).MustString()),
+				Quantity: common.ParseFloat64Str(item.GetIndex(1).MustString()),
 			}
 		}
 		handler(event)
