@@ -49,13 +49,13 @@ func (s *assetTradeFeeServiceSuite) TestListTradeFee() {
 	s.Len(rows, 2)
 	s.assertTradeFeeServiceEqual(&TradeFeeDetails{
 		Symbol:          "ADABNB",
-		MakerCommission: "0.001",
-		TakerCommission: "0.001"},
+		MakerCommission: 0.001,
+		TakerCommission: 0.001},
 		rows[0])
 	s.assertTradeFeeServiceEqual(&TradeFeeDetails{
 		Symbol:          "BNBBTC",
-		MakerCommission: "0.001",
-		TakerCommission: "0.001"},
+		MakerCommission: 0.001,
+		TakerCommission: 0.001},
 		rows[1])
 }
 
@@ -80,7 +80,7 @@ func (s *assetTradeFeeServiceSuite) TestSingleSymbolTradeFee() {
 	s.Len(rows, 1)
 	s.assertTradeFeeServiceEqual(&TradeFeeDetails{
 		Symbol:          "ADABNB",
-		MakerCommission: "0.001",
-		TakerCommission: "0.001"},
+		MakerCommission: 0.001,
+		TakerCommission: 0.001},
 		rows[0])
 }

@@ -528,7 +528,7 @@ type Order struct {
 	Type                     OrderType       `json:"type"`
 	Side                     SideType        `json:"side"`
 	StopPrice                common.Float64  `json:"stopPrice"`
-	IcebergQuantity          string          `json:"icebergQty"`
+	IcebergQuantity          common.Float64  `json:"icebergQty"`
 	Time                     int64           `json:"time"`
 	UpdateTime               int64           `json:"updateTime"`
 	IsWorking                bool            `json:"isWorking"`

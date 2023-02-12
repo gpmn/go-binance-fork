@@ -383,7 +383,7 @@ type Order struct {
 	Time             int64            `json:"time"`
 	UpdateTime       int64            `json:"updateTime"`
 	WorkingType      WorkingType      `json:"workingType"`
-	ActivatePrice    string           `json:"activatePrice"`
+	ActivatePrice    common.Float64   `json:"activatePrice"`
 	PriceRate        common.Float64   `json:"priceRate"`
 	AvgPrice         common.Float64   `json:"avgPrice"`
 	OrigType         string           `json:"origType"`

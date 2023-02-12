@@ -526,7 +526,7 @@ type WsOrderUpdate struct {
 	FilledVolume            common.Float64  `json:"z"`
 	LatestPrice             common.Float64  `json:"L"` // price for the latest trade
 	FeeAsset                string          `json:"N"`
-	FeeCost                 string          `json:"n"`
+	FeeCost                 common.Float64  `json:"n"`
 	TransactionTime         int64           `json:"T"`
 	TradeId                 int64           `json:"t"`
 	IsInOrderBook           bool            `json:"w"` // is the order in the order book?

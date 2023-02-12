@@ -45,14 +45,14 @@ func (s *depthServiceTestSuite) TestDepth() {
 		LastUpdateID: 1027024,
 		Bids: []Bid{
 			{
-				Price:    "4.00000000",
-				Quantity: "431.00000000",
+				Price:    4.00000000,
+				Quantity: 431.00000000,
 			},
 		},
 		Asks: []Ask{
 			{
-				Price:    "4.00000200",
-				Quantity: "12.00000000",
+				Price:    4.00000200,
+				Quantity: 12.00000000,
 			},
 		},
 	}

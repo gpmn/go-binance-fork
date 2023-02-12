@@ -834,8 +834,8 @@ type WsAccountUpdate struct {
 type WsBalance struct {
 	Asset              string         `json:"a"`
 	Balance            common.Float64 `json:"wb"`
-	CrossWalletBalance string         `json:"cw"`
-	ChangeBalance      string         `json:"bc"`
+	CrossWalletBalance common.Float64 `json:"cw"`
+	ChangeBalance      common.Float64 `json:"bc"`
 }
 
 // WsPosition define position
@@ -844,7 +844,7 @@ type WsPosition struct {
 	Side                      PositionSideType `json:"ps"`
 	Amount                    common.Float64   `json:"pa"`
 	MarginType                MarginType       `json:"mt"`
-	IsolatedWallet            string           `json:"iw"`
+	IsolatedWallet            common.Float64   `json:"iw"`
 	EntryPrice                common.Float64   `json:"ep"`
 	MarkPrice                 common.Float64   `json:"mp"`
 	UnrealizedPnL             common.Float64   `json:"up"`
@@ -873,8 +873,8 @@ type WsOrderTradeUpdate struct {
 	Commission           common.Float64     `json:"n"`
 	TradeTime            int64              `json:"T"`
 	TradeID              int64              `json:"t"`
-	BidsNotional         string             `json:"b"`
-	AsksNotional         string             `json:"a"`
+	BidsNotional         common.Float64     `json:"b"`
+	AsksNotional         common.Float64     `json:"a"`
 	IsMaker              bool               `json:"m"`
 	IsReduceOnly         bool               `json:"R"`
 	WorkingType          WorkingType        `json:"wt"`
@@ -882,7 +882,7 @@ type WsOrderTradeUpdate struct {
 	PositionSide         PositionSideType   `json:"ps"`
 	IsClosingPosition    bool               `json:"cp"`
 	ActivationPrice      common.Float64     `json:"AP"`
-	CallbackRate         string             `json:"cr"`
+	CallbackRate         common.Float64     `json:"cr"`
 	RealizedPnL          common.Float64     `json:"rp"`
 }
 

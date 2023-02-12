@@ -35,8 +35,8 @@ func (commissionRateService *commissionRateServiceTestSuite) TestCommissionRate(
 	commissionRateService.r().NoError(err)
 	expectation := &CommissionRate{
 		Symbol:              symbol,
-		MakerCommissionRate: "0.001",
-		TakerCommissionRate: "0.001",
+		MakerCommissionRate: 0.001,
+		TakerCommissionRate: 0.001,
 	}
 	commissionRateService.assertCommissionRateResponseEqual(expectation, res)
 }

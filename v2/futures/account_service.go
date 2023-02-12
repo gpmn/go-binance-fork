@@ -106,7 +106,7 @@ type AccountAsset struct {
 // AccountPosition define account position
 type AccountPosition struct {
 	Isolated               bool             `json:"isolated"`
-	Leverage               string           `json:"leverage"`
+	Leverage               common.Float64   `json:"leverage"`
 	InitialMargin          common.Float64   `json:"initialMargin"`
 	MaintMargin            common.Float64   `json:"maintMargin"`
 	OpenOrderInitialMargin common.Float64   `json:"openOrderInitialMargin"`
@@ -117,7 +117,7 @@ type AccountPosition struct {
 	MaxNotional            common.Float64   `json:"maxNotional"`
 	PositionSide           PositionSideType `json:"positionSide"`
 	PositionAmt            common.Float64   `json:"positionAmt"`
-	Notional               string           `json:"notional"`
-	IsolatedWallet         string           `json:"isolatedWallet"`
+	Notional               common.Float64   `json:"notional"`
+	IsolatedWallet         common.Float64   `json:"isolatedWallet"`
 	UpdateTime             int64            `json:"updateTime"`
 }
