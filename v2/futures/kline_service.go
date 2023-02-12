@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // KlinesService list klines
@@ -79,18 +81,19 @@ func (s *KlinesService) Do(ctx context.Context, opts ...RequestOption) (res []*K
 			err = fmt.Errorf("invalid kline response")
 			return []*Kline{}, err
 		}
+
 		res[i] = &Kline{
 			OpenTime:                 item.GetIndex(0).MustInt64(),
-			Open:                     item.GetIndex(1).MustString(),
-			High:                     item.GetIndex(2).MustString(),
-			Low:                      item.GetIndex(3).MustString(),
-			Close:                    item.GetIndex(4).MustString(),
-			Volume:                   item.GetIndex(5).MustString(),
+			Open:                     common.ParseFloat64Str(item.GetIndex(1).MustString()),
+			High:                     common.ParseFloat64Str(item.GetIndex(2).MustString()),
+			Low:                      common.ParseFloat64Str(item.GetIndex(3).MustString()),
+			Close:                    common.ParseFloat64Str(item.GetIndex(4).MustString()),
+			Volume:                   common.ParseFloat64Str(item.GetIndex(5).MustString()),
 			CloseTime:                item.GetIndex(6).MustInt64(),
-			QuoteAssetVolume:         item.GetIndex(7).MustString(),
+			QuoteAssetVolume:         common.ParseFloat64Str(item.GetIndex(7).MustString()),
 			TradeNum:                 item.GetIndex(8).MustInt64(),
-			TakerBuyBaseAssetVolume:  item.GetIndex(9).MustString(),
-			TakerBuyQuoteAssetVolume: item.GetIndex(10).MustString(),
+			TakerBuyBaseAssetVolume:  common.ParseFloat64Str(item.GetIndex(9).MustString()),
+			TakerBuyQuoteAssetVolume: common.ParseFloat64Str(item.GetIndex(10).MustString()),
 		}
 	}
 	return res, nil
@@ -98,15 +101,15 @@ func (s *KlinesService) Do(ctx context.Context, opts ...RequestOption) (res []*K
 
 // Kline define kline info
 type Kline struct {
-	OpenTime                 int64  `json:"openTime"`
-	Open                     string `json:"open"`
-	High                     string `json:"high"`
-	Low                      string `json:"low"`
-	Close                    string `json:"close"`
-	Volume                   string `json:"volume"`
-	CloseTime                int64  `json:"closeTime"`
-	QuoteAssetVolume         string `json:"quoteAssetVolume"`
-	TradeNum                 int64  `json:"tradeNum"`
-	TakerBuyBaseAssetVolume  string `json:"takerBuyBaseAssetVolume"`
-	TakerBuyQuoteAssetVolume string `json:"takerBuyQuoteAssetVolume"`
+	OpenTime                 int64          `json:"openTime"`
+	Open                     common.Float64 `json:"open"`
+	High                     common.Float64 `json:"high"`
+	Low                      common.Float64 `json:"low"`
+	Close                    common.Float64 `json:"close"`
+	Volume                   common.Float64 `json:"volume"`
+	CloseTime                int64          `json:"closeTime"`
+	QuoteAssetVolume         common.Float64 `json:"quoteAssetVolume"`
+	TradeNum                 int64          `json:"tradeNum"`
+	TakerBuyBaseAssetVolume  common.Float64 `json:"takerBuyBaseAssetVolume"`
+	TakerBuyQuoteAssetVolume common.Float64 `json:"takerBuyQuoteAssetVolume"`
 }

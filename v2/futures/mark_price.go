@@ -45,11 +45,11 @@ func (s *PremiumIndexService) Do(ctx context.Context, opts ...RequestOption) (re
 
 // PremiumIndex define premium index of mark price
 type PremiumIndex struct {
-	Symbol          string `json:"symbol"`
-	MarkPrice       string `json:"markPrice"`
-	LastFundingRate string `json:"lastFundingRate"`
-	NextFundingTime int64  `json:"nextFundingTime"`
-	Time            int64  `json:"time"`
+	Symbol          string         `json:"symbol"`
+	MarkPrice       common.Float64 `json:"markPrice"`
+	LastFundingRate common.Float64 `json:"lastFundingRate"`
+	NextFundingTime int64          `json:"nextFundingTime"`
+	Time            int64          `json:"time"`
 }
 
 // FundingRateService get funding rate
@@ -116,10 +116,10 @@ func (s *FundingRateService) Do(ctx context.Context, opts ...RequestOption) (res
 
 // FundingRate define funding rate of mark price
 type FundingRate struct {
-	Symbol      string `json:"symbol"`
-	FundingRate string `json:"fundingRate"`
-	FundingTime int64  `json:"fundingTime"`
-	Time        int64  `json:"time"`
+	Symbol      string         `json:"symbol"`
+	FundingRate common.Float64 `json:"fundingRate"`
+	FundingTime int64          `json:"fundingTime"`
+	Time        int64          `json:"time"`
 }
 
 // GetLeverageBracketService get funding rate

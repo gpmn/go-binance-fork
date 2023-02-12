@@ -44,11 +44,11 @@ func (s *ListBookTickersService) Do(ctx context.Context, opts ...RequestOption) 
 
 // BookTicker define book ticker info
 type BookTicker struct {
-	Symbol      string `json:"symbol"`
-	BidPrice    string `json:"bidPrice"`
-	BidQuantity string `json:"bidQty"`
-	AskPrice    string `json:"askPrice"`
-	AskQuantity string `json:"askQty"`
+	Symbol      string         `json:"symbol"`
+	BidPrice    common.Float64 `json:"bidPrice"`
+	BidQuantity common.Float64 `json:"bidQty"`
+	AskPrice    common.Float64 `json:"askPrice"`
+	AskQuantity common.Float64 `json:"askQty"`
 }
 
 // ListPricesService list latest price for a symbol or symbols

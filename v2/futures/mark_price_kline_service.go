@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // MarkPriceKlinesService list mark price klines
@@ -81,10 +82,10 @@ func (mpks *MarkPriceKlinesService) Do(ctx context.Context, opts ...RequestOptio
 		}
 		res[i] = &Kline{
 			OpenTime:  item.GetIndex(0).MustInt64(),
-			Open:      item.GetIndex(1).MustString(),
-			High:      item.GetIndex(2).MustString(),
-			Low:       item.GetIndex(3).MustString(),
-			Close:     item.GetIndex(4).MustString(),
+			Open:      common.ParseFloat64Str(item.GetIndex(1).MustString()),
+			High:      common.ParseFloat64Str(item.GetIndex(2).MustString()),
+			Low:       common.ParseFloat64Str(item.GetIndex(3).MustString()),
+			Close:     common.ParseFloat64Str(item.GetIndex(4).MustString()),
 			CloseTime: item.GetIndex(6).MustInt64(),
 		}
 	}
