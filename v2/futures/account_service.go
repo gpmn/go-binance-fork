@@ -75,17 +75,17 @@ type Account struct {
 	CanDeposit                  bool               `json:"canDeposit"`
 	CanWithdraw                 bool               `json:"canWithdraw"`
 	UpdateTime                  int64              `json:"updateTime"`
-	TotalInitialMargin          string             `json:"totalInitialMargin"`
-	TotalMaintMargin            string             `json:"totalMaintMargin"`
-	TotalWalletBalance          string             `json:"totalWalletBalance"`
-	TotalUnrealizedProfit       string             `json:"totalUnrealizedProfit"`
-	TotalMarginBalance          string             `json:"totalMarginBalance"`
-	TotalPositionInitialMargin  string             `json:"totalPositionInitialMargin"`
-	TotalOpenOrderInitialMargin string             `json:"totalOpenOrderInitialMargin"`
-	TotalCrossWalletBalance     string             `json:"totalCrossWalletBalance"`
-	TotalCrossUnPnl             string             `json:"totalCrossUnPnl"`
-	AvailableBalance            string             `json:"availableBalance"`
-	MaxWithdrawAmount           string             `json:"maxWithdrawAmount"`
+	TotalInitialMargin          common.Float64     `json:"totalInitialMargin"`
+	TotalMaintMargin            common.Float64     `json:"totalMaintMargin"`
+	TotalWalletBalance          common.Float64     `json:"totalWalletBalance"`
+	TotalUnrealizedProfit       common.Float64     `json:"totalUnrealizedProfit"`
+	TotalMarginBalance          common.Float64     `json:"totalMarginBalance"`
+	TotalPositionInitialMargin  common.Float64     `json:"totalPositionInitialMargin"`
+	TotalOpenOrderInitialMargin common.Float64     `json:"totalOpenOrderInitialMargin"`
+	TotalCrossWalletBalance     common.Float64     `json:"totalCrossWalletBalance"`
+	TotalCrossUnPnl             common.Float64     `json:"totalCrossUnPnl"`
+	AvailableBalance            common.Float64     `json:"availableBalance"`
+	MaxWithdrawAmount           common.Float64     `json:"maxWithdrawAmount"`
 	Positions                   []*AccountPosition `json:"positions"`
 }
 
@@ -101,6 +101,10 @@ type AccountAsset struct {
 	UnrealizedProfit       common.Float64 `json:"unrealizedProfit"`
 	WalletBalance          common.Float64 `json:"walletBalance"`
 	MarginAvailable        bool           `json:"marginAvailable"`
+	CrossWalletBalance     common.Float64 `json:"crossWalletBalance"`
+	CrossUnPnl             common.Float64 `json:"crossUnPnl"`
+	AvailableBalance       common.Float64 `json:"availableBalance"`
+	UpdateTime             int64          `json:"updateTime"`
 }
 
 // AccountPosition define account position

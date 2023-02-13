@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+
+	"github.com/adshao/go-binance/v2/common"
 )
 
 // GetPositionRiskService get account balance
@@ -42,18 +44,18 @@ func (s *GetPositionRiskService) Do(ctx context.Context, opts ...RequestOption) 
 
 // PositionRisk define position risk info
 type PositionRisk struct {
-	EntryPrice       string `json:"entryPrice"`
-	MarginType       string `json:"marginType"`
-	IsAutoAddMargin  string `json:"isAutoAddMargin"`
-	IsolatedMargin   string `json:"isolatedMargin"`
-	Leverage         string `json:"leverage"`
-	LiquidationPrice string `json:"liquidationPrice"`
-	MarkPrice        string `json:"markPrice"`
-	MaxNotionalValue string `json:"maxNotionalValue"`
-	PositionAmt      string `json:"positionAmt"`
-	Symbol           string `json:"symbol"`
-	UnRealizedProfit string `json:"unRealizedProfit"`
-	PositionSide     string `json:"positionSide"`
-	Notional         string `json:"notional"`
-	IsolatedWallet   string `json:"isolatedWallet"`
+	EntryPrice       common.Float64 `json:"entryPrice"`
+	MarginType       string         `json:"marginType"`
+	IsAutoAddMargin  string         `json:"isAutoAddMargin"`
+	IsolatedMargin   common.Float64 `json:"isolatedMargin"`
+	Leverage         common.Float64 `json:"leverage"`
+	LiquidationPrice common.Float64 `json:"liquidationPrice"`
+	MarkPrice        common.Float64 `json:"markPrice"`
+	MaxNotionalValue common.Float64 `json:"maxNotionalValue"`
+	PositionAmt      common.Float64 `json:"positionAmt"`
+	Symbol           string         `json:"symbol"`
+	UnRealizedProfit common.Float64 `json:"unRealizedProfit"`
+	PositionSide     string         `json:"positionSide"`
+	Notional         string         `json:"notional"`
+	IsolatedWallet   string         `json:"isolatedWallet"`
 }

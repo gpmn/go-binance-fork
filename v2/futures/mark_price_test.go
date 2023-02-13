@@ -37,8 +37,8 @@ func (s *premiumIndexServiceTestSuite) TestGetPremiumIndex() {
 	s.r().NoError(err)
 	e := []*PremiumIndex{&PremiumIndex{
 		Symbol:          symbol,
-		MarkPrice:       "11012.80409769",
-		LastFundingRate: "-0.03750000",
+		MarkPrice:       11012.80409769,
+		LastFundingRate: -0.03750000,
 		NextFundingTime: int64(1562569200000),
 		Time:            int64(1562566020000),
 	},
@@ -101,13 +101,13 @@ func (s *fundingRateServiceTestSuite) TestGetFundingRate() {
 	e := []*FundingRate{
 		{
 			Symbol:      symbol,
-			FundingRate: "-0.03750000",
+			FundingRate: -0.03750000,
 			FundingTime: int64(1570608000000),
 			Time:        int64(1576566020000),
 		},
 		{
 			Symbol:      symbol,
-			FundingRate: "0.00010000",
+			FundingRate: 0.00010000,
 			FundingTime: int64(1570636800000),
 			Time:        int64(1576566020000),
 		},

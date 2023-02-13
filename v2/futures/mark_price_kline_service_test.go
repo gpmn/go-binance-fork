@@ -70,18 +70,18 @@ func (s *markPriceKlineServiceTestSuite) TestKlines() {
 	s.Len(klines, 2)
 	kline1 := &Kline{
 		OpenTime:  1499040000000,
-		Open:      "0.01634790",
-		High:      "0.80000000",
-		Low:       "0.01575800",
-		Close:     "0.01577100",
+		Open:      0.01634790,
+		High:      0.80000000,
+		Low:       0.01575800,
+		Close:     0.01577100,
 		CloseTime: 1499644799999,
 	}
 	kline2 := &Kline{
 		OpenTime:  1499040000001,
-		Open:      "0.01634790",
-		High:      "0.80000000",
-		Low:       "0.01575800",
-		Close:     "0.01577101",
+		Open:      0.01634790,
+		High:      0.80000000,
+		Low:       0.01575800,
+		Close:     0.01577101,
 		CloseTime: 1499644799999,
 	}
 	s.assertKlineEqual(kline1, klines[0])

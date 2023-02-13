@@ -45,17 +45,17 @@ func (s *tickerServiceTestSuite) TestListBookTickers() {
 	r.Len(tickers, 2)
 	e1 := &BookTicker{
 		Symbol:      "LTCBTC",
-		BidPrice:    "4.00000000",
-		BidQuantity: "431.00000000",
-		AskPrice:    "4.00000200",
-		AskQuantity: "9.00000000",
+		BidPrice:    4.00000000,
+		BidQuantity: 431.00000000,
+		AskPrice:    4.00000200,
+		AskQuantity: 9.00000000,
 	}
 	e2 := &BookTicker{
 		Symbol:      "ETHBTC",
-		BidPrice:    "0.07946700",
-		BidQuantity: "9.00000000",
-		AskPrice:    "100000.00000000",
-		AskQuantity: "1000.00000000",
+		BidPrice:    0.07946700,
+		BidQuantity: 9.00000000,
+		AskPrice:    100000.00000000,
+		AskQuantity: 1000.00000000,
 	}
 	s.assertBookTickerEqual(e1, tickers[0])
 	s.assertBookTickerEqual(e2, tickers[1])
@@ -85,10 +85,10 @@ func (s *tickerServiceTestSuite) TestSingleBookTicker() {
 	r.Len(tickers, 1)
 	e := &BookTicker{
 		Symbol:      "LTCBTC",
-		BidPrice:    "4.00000000",
-		BidQuantity: "431.00000000",
-		AskPrice:    "4.00000200",
-		AskQuantity: "9.00000000",
+		BidPrice:    4.00000000,
+		BidQuantity: 431.00000000,
+		AskPrice:    4.00000200,
+		AskQuantity: 9.00000000,
 	}
 	s.assertBookTickerEqual(e, tickers[0])
 }

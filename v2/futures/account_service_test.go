@@ -134,7 +134,7 @@ func (s *accountServiceTestSuite) TestGetAccount() {
 		CanWithdraw:       true,
 		CanDeposit:        true,
 		FeeTier:           2,
-		MaxWithdrawAmount: "8.41264592",
+		MaxWithdrawAmount: 8.41264592,
 		Positions: []*AccountPosition{
 			{
 				Isolated:               false,
@@ -154,13 +154,13 @@ func (s *accountServiceTestSuite) TestGetAccount() {
 				UpdateTime:             1618646402359,
 			},
 		},
-		TotalInitialMargin:          "0.33683000",
-		TotalMaintMargin:            "0.02695000",
-		TotalMarginBalance:          "8.74947592",
-		TotalOpenOrderInitialMargin: "0.00000000",
-		TotalPositionInitialMargin:  "0.33683000",
-		TotalUnrealizedProfit:       "-0.44537584",
-		TotalWalletBalance:          "9.19485176",
+		TotalInitialMargin:          0.33683000,
+		TotalMaintMargin:            0.02695000,
+		TotalMarginBalance:          8.74947592,
+		TotalOpenOrderInitialMargin: 0.00000000,
+		TotalPositionInitialMargin:  0.33683000,
+		TotalUnrealizedProfit:       -0.44537584,
+		TotalWalletBalance:          9.19485176,
 		UpdateTime:                  0,
 	}
 	s.assertAccountEqual(e, res)

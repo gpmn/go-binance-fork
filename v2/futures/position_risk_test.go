@@ -49,17 +49,17 @@ func (s *positionRiskServiceTestSuite) TestGetPositionRisk() {
 	r.NoError(err)
 	r.Len(res, 1)
 	e := &PositionRisk{
-		EntryPrice:       "10359.38000",
+		EntryPrice:       10359.38000,
 		MarginType:       "isolated",
 		IsAutoAddMargin:  "false",
-		IsolatedMargin:   "3.15899368",
-		Leverage:         "125",
-		LiquidationPrice: "9332.61",
-		MarkPrice:        "10348.27548846",
-		MaxNotionalValue: "50000",
-		PositionAmt:      "0.003",
+		IsolatedMargin:   3.15899368,
+		Leverage:         125,
+		LiquidationPrice: 9332.61,
+		MarkPrice:        10348.27548846,
+		MaxNotionalValue: 50000,
+		PositionAmt:      0.003,
 		Symbol:           "BTCUSDT",
-		UnRealizedProfit: "-0.03331353",
+		UnRealizedProfit: -0.03331353,
 		PositionSide:     "BOTH",
 	}
 	s.assertPositionRiskEqual(e, res[0])
