@@ -539,6 +539,8 @@ type CancelOrderResponse struct {
 	OrigType         string           `json:"origType"`
 	PositionSide     PositionSideType `json:"positionSide"`
 	PriceProtect     bool             `json:"priceProtect"`
+	Code             int64            `json:"code"`
+	Msg              string           `json:"msg"`
 }
 
 // CancelAllOpenOrdersService cancel all open orders
